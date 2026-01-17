@@ -1,4 +1,4 @@
-#define __HDDHOLD_VERSION__ "1.0.1"
+#define __HDDHOLD_VERSION__ "1.0.2"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -76,7 +76,7 @@ int main(int argc,char **argv) {
 	srand(time(0));
 	unsigned char bindata[bytes];
 	while (1) {
-		for (char i=0;i<4;i++) {
+		for (unsigned int i=0;i<bytes;i++) {
 			bindata[i]= (char)(rand() % 256);
 		}
 		FILE *fp = fopen(holdfilename,"wb");
