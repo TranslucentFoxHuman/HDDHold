@@ -1,4 +1,4 @@
-#define __HDDHOLD_VERSION__ "1.0"
+#define __HDDHOLD_VERSION__ "1.0.1"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,9 +31,9 @@ int main(int argc,char **argv) {
 				   "Options:\n"
 				   "-b <bytes>    : Set size of random data by bytes. (default: 4)\n"
 				   "-i <interval> : Set the interval to perform write accessin seconds. (default: 4)\n"
-				   "-o <filename> : Set the filename to write random data. (default: C:\\hddhold)\n"
+				   "-o <filename> : Set the filename to write random data. (default: %s)\n"
 				   "-h --help     : Print this help.\n"
-				   "-v --version  : Print program version.\n");
+				   "-v --version  : Print program version.\n",holdfilename);
 			exit(0);
 		} else if (strcmp(argv[i],"-v")==0 || strcmp(argv[i],"--version")==0) {
 			printf("hddhold %s\n"
@@ -75,7 +75,7 @@ int main(int argc,char **argv) {
 	}
 	srand(time(0));
 	unsigned char bindata[bytes];
-	while (true) {
+	while (1) {
 		for (char i=0;i<4;i++) {
 			bindata[i]= (char)(rand() % 256);
 		}
