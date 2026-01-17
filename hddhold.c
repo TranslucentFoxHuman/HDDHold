@@ -1,4 +1,4 @@
-#define __HDDHOLD_VERSION__ "1.0.2"
+#define __HDDHOLD_VERSION__ "1.0.3"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,7 +30,7 @@ int main(int argc,char **argv) {
 				   "\n"
 				   "Options:\n"
 				   "-b <bytes>    : Set size of random data by bytes. (default: 4)\n"
-				   "-i <interval> : Set the interval to perform write accessin seconds. (default: 4)\n"
+				   "-i <interval> : Set the interval to perform write access in seconds. (default: 4)\n"
 				   "-o <filename> : Set the filename to write random data. (default: %s)\n"
 				   "-h --help     : Print this help.\n"
 				   "-v --version  : Print program version.\n",holdfilename);
