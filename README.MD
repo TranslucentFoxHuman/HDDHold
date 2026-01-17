@@ -5,7 +5,8 @@ This program writes a random byte sequence to a file at specified intervals. By 
 On Unix, it was sufficient to run the shell script in the **Running on Unix** section below. However, Windows does not have a special file like `/dev/urandom` that produces random numbers, so I developed a C program that performs the same task. For this reason, the project is cross‑platform but primarily developed for Windows.
 
 ## Build instructions
-This code should compile with any C compiler. There are no dependencies or Makefiles, so just pass the source files to the compiler.  
+This code can be compiled with gcc or clang. The Microsoft Visual C++ compiler is not supported.  
+There are no dependencies or Makefiles, so just pass the source files to the compiler.  
 On Windows we recommend using `gcc` from [MinGW‑w64](https://github.com/niXman/mingw-builds-binaries/releases).
 
 With `gcc`, you can compile on either Windows or Unix with a command like:

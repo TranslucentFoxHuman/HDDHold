@@ -6,7 +6,8 @@ Unixでは以下の「Unix上での実行」セクションにあるシェルス
 このような理由から、クロスプラットフォームですが主にWindows用に開発されています。
 
 ## ビルド方法
-このコードはいかなるC言語コンパイラでもコンパイルできるはずです。依存関係やMakefileなどは無いため、コンパイラにソースコードを渡すだけでビルドできます。  
+このコードはgccまたはclangでコンパイルできます。Microsoft Visual C++コンパイラはサポートされていません。  
+依存関係やMakefileなどは無いため、コンパイラにソースコードを渡すだけでビルドできます。  
 Windowsでは[MinGW-w64](https://github.com/niXman/mingw-builds-binaries/releases)によるgccを推奨します。
 
 gccを使用する場合、WindowsでもUnixでも、以下のようなコマンドでコンパイルできます。
