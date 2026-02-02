@@ -27,7 +27,7 @@ The `/MD` and `/O2` options are not mandatory, but specifying `/MD` makes the fi
 If you use OpenWatcom, you can do it like this. It is usually not recommended, but it can be used in very old environments where MinGW or Visual C++ are not available, such as Windows 9x‑style systems.
 
 ```bash
-wcl386 -bcl=winnt -fe=hddhold.exe hddhold.c
+wcl386 -bcl=win95 -fe=hddhold.exe hddhold.c
 ```
 
 Although it is completely useless, using OpenWatcom also allows you to compile for MS‑DOS.  
