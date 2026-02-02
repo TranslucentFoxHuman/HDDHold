@@ -6,14 +6,29 @@ Unixでは以下の「Unix上での実行」セクションにあるシェルス
 このような理由から、クロスプラットフォームですが主にWindows用に開発されています。
 
 ## ビルド方法
-このコードはgccまたはclangでコンパイルできます。Microsoft Visual C++コンパイラはサポートされていません。  
-依存関係やMakefileなどは無いため、コンパイラにソースコードを渡すだけでビルドできます。  
-Windowsでは[MinGW-w64](https://github.com/niXman/mingw-builds-binaries/releases)によるgccを推奨します。
+このコードはgccまたはclangでコンパイルできます。コードの改善により、Visual C++コンパイラでもコンパイル出来るようになりました。C89しかサポートしない非常に古いコンパイラでもコンパイルすることができます。
+依存関係やMakefileなどは無いため、コンパイラにソースコードを渡すだけでビルドできます。
 
-gccを使用する場合、WindowsでもUnixでも、以下のようなコマンドでコンパイルできます。
+gccを使用する場合、WindowsでもUnixでも、以下のようなコマンドでコンパイルできます。  
+Windows用のgccは[MinGW-w64](https://github.com/niXman/mingw-builds-binaries/releases)が使用できます。
 ```
-gcc hddhold.c -o hddhold.exe
+gcc hddhold.c -O2 -o hddhold.exe
 ```
+
+Visual C++を使用する場合は以下のようなコマンドでコンパイルします。
+```
+cl hddhold.c /Fehddhold.exe /MD /O2
+```  
+
+`/MD`および`/O2`オプションは必須ではありませんが、`/MD`を指定するとファイルサイズが非常に小さくなり、また`/O2`を指定すると実行が高速になります。このプログラムは常駐しバックグラウンドで動作するプログラムであるため、これらの指定は推奨されます。
+
+OpenWatcomを使用する場合は以下のようにします。通常は推奨されませんが、Windows 9xのようなMinGWやVisual C++が利用出来ない非常に古い環境では使用することができます。
+```
+wcl386 -bcl=winnt -fe=hddhold.exe hddhold.c
+```
+
+まったく役に立ちませんが、OpenWatcomを使用するとMS-DOS用にもコンパイルできます。  
+MS-DOS用には常駐しませんから、MS-DOSでは本当にただのおもちゃです:)
 
 ## 使用方法
 ```

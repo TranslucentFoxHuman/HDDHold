@@ -5,14 +5,33 @@ This program writes a random byte sequence to a file at specified intervals. By 
 On Unix, it was sufficient to run the shell script in the **Running on Unix** section below. However, Windows does not have a special file like `/dev/urandom` that produces random numbers, so I developed a C program that performs the same task. For this reason, the project is cross‑platform but primarily developed for Windows.
 
 ## Build instructions
-This code can be compiled with gcc or clang. The Microsoft Visual C++ compiler is not supported.  
-There are no dependencies or Makefiles, so just pass the source files to the compiler.  
-On Windows we recommend using `gcc` from [MinGW‑w64](https://github.com/niXman/mingw-builds-binaries/releases).
+This code can be compiled with any compilers. With improvements to the code, it can also be compiled with the Visual C++ compiler. It can even be compiled with very old compilers that only support C89.
 
-With `gcc`, you can compile on either Windows or Unix with a command like:
-```sh
-gcc hddhold.c -o hddhold.exe
+There are no dependencies or Makefiles, so you can build it by simply passing the source file to the compiler.
+
+If you use gcc, you can compile it on both Windows and Unix with a command like the following.  
+For Windows, you can use [MinGW‑w64](https://github.com/niXman/mingw-builds-binaries/releases).
+
+```bash
+gcc hddhold.c -O2 -o hddhold.exe
 ```
+
+If you use Visual C++, compile it with a command such as:
+
+```cmd
+cl hddhold.c /Fehddhold.exe /MD /O2
+```
+
+The `/MD` and `/O2` options are not mandatory, but specifying `/MD` makes the file size very small, and specifying `/O2` speeds up execution. Because this program runs as a background service, these options are recommended.
+
+If you use OpenWatcom, you can do it like this. It is usually not recommended, but it can be used in very old environments where MinGW or Visual C++ are not available, such as Windows 9x‑style systems.
+
+```bash
+wcl386 -bcl=winnt -fe=hddhold.exe hddhold.c
+```
+
+Although it is completely useless, using OpenWatcom also allows you to compile for MS‑DOS.  
+Since it does not run as a resident program in MS‑DOS, it is really just a toy there :)
 
 ## Usage
 ```

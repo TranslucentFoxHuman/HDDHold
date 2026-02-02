@@ -1,4 +1,4 @@
-#define __HDDHOLD_VERSION__ "1.0.3"
+#define __HDDHOLD_VERSION__ "1.1.0"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +24,9 @@ unsigned int bytes = 4;
 
 
 int main(int argc,char **argv) {
-	for (int i=1;i<argc;i++) {
+	unsigned char *bindata;
+	int i;
+	for (i=1;i<argc;i++) {
 		if (strcmp(argv[i],"-h")==0 || strcmp(argv[i],"--help")==0){
 			printf("hddhold - Prevent HDD from sleeping by writting random data to a file.\n"
 				   "\n"
@@ -74,17 +76,18 @@ int main(int argc,char **argv) {
 		}
 	}
 	srand(time(0));
-	unsigned char bindata[bytes];
+	bindata = (unsigned char*)malloc(bytes);
 	while (1) {
-		for (unsigned int i=0;i<bytes;i++) {
-			bindata[i]= (char)(rand() % 256);
+		FILE *fp;
+		for (i=0;i<bytes;i++) {
+			bindata[i]= (unsigned char)(rand() % 256);
 		}
-		FILE *fp = fopen(holdfilename,"wb");
+		fp = fopen(holdfilename,"wb");
 		if (fp == NULL) {
 			printf("Could not open the file: \"%s\"",holdfilename);
 			exit(3);
 		}
-		if (fwrite(bindata,sizeof(char),(sizeof(bindata)/sizeof(char)),fp) == 0) {
+		if (fwrite(bindata,sizeof(unsigned char),bytes,fp) == 0) {
 			printf("Could not write to file.");
 		}
 			fclose(fp);
