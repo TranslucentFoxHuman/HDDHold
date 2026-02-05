@@ -24,7 +24,7 @@ cl hddhold.c /Fehddhold.exe /MD /O2
 
 OpenWatcomを使用する場合は以下のようにします。通常は推奨されませんが、Windows 9xのようなMinGWやVisual C++が利用出来ない非常に古い環境では使用することができます。
 ```
-wcl386 -bcl=win95 -fe=hddhold.exe hddhold.c
+wcl386 -bcl=nt -fe=hddhold.exe hddhold.c
 ```
 
 まったく役に立ちませんが、OpenWatcomを使用するとMS-DOS用にもコンパイルできます。  
